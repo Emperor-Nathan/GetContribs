@@ -65,7 +65,7 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
     final = 0
     webpage = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + offset + '&limit='+str(display)+'&target=' + ud[0]).content, 'html.parser')
     try:
-        npo = webpage.find('a', {'class':'mw-nextlink'})['href'][59:73]
+        npo = webpage.find('a', {'class':'mw-nextlink'})['href'][len(ud[0])+49:len(ud[0])+63]
     except TypeError:
         npo = ''
     listof_meta = webpage.find_all('ul', {'class':'mw-contributions-list'})
@@ -190,6 +190,7 @@ ud = readUser()
 dateformat = readDateFormat()
 sd = ud[1]
 ed = ud[2]
+mxdstr = ed.strftime('%Y%m%d%H%M%S')
 for b in ud[3]:
     for a in ud[4]:
         try:
@@ -197,7 +198,7 @@ for b in ud[3]:
         except KeyError:
             print('Error: missing date format for language ' + b + '.')
         try:
-            f = getOneWiki(mode, b, a, '', sd, ed, dfb)
+            f = getOneWiki(mode, b, a, mxdstr, sd, ed, dfb)
             if f != 0:
                 try:
                     totalcontribs[a][b] = f
@@ -215,7 +216,7 @@ for b in ud[3]:
 totalcontribs['other'] = {}
 for ow in ud[5]:
     try:
-        f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], '', sd, ed, dateformat['mul'])
+        f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], mxdstr, sd, ed, dateformat['mul'])
         if f != 0:
             totalcontribs['other'][ow] = f
         final += f

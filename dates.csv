@@ -5,7 +5,7 @@ ar,%t، %d %m %y,يناير,فبراير,مارس,أبريل,مايو,يونيو
 arz,%t، %d %m %y,يناير,فبراير,مارس,ابريل,مايو,يونيه,يوليه,اغسطس,سبتمبر,اكتوبر,نوفمبر,ديسمبر
 ca,"%t, %d %m %y",gen,feb,març,abr,maig,juny,jul,ago,set,oct,nov,des
 ceb,"%t, %d %m %y",Enero,Pebrero,Marso,Abril,Mayo,Hunyo,Hulyo,Agosto,Septiyembre,Oktubre,Nobiyembre,Disyembre
-de,"%t, %d. %m. %y",Jan,Feb,Mär,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez
+de,"%t, %d. %m %y",Jan.,Feb.,Mär.,Apr.,Mai,Jun.,Jul.,Aug.,Sep.,Okt.,Nov.,Dez.
 el,"%t, %d %m %y",Ιανουαρίου,Φεβρουαρίου,Μαρτίου,Απριλίου,Μαΐου,Ιουνίου,Ιουλίου,Αυγούστου,Σεπτεμβρίου,Οκτωβρίου,Νοεμβρίου,Δεκεμβρίου
 en,"%t, %d %m %y",January,February,March,April,May,June,July,August,September,October,November,December
 es,%t %d %m %y,ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic
