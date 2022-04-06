@@ -13,7 +13,7 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
-othernumbers = ['', '', '', '', '', '', '', '', '', '']
+othernumbers = ['༠', '༡', '༢', '༣', '༤', '༥', '༦', '༧', '༨', '༩']
 
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
@@ -82,6 +82,15 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
     surpassed = False
     for a in listof:
         datetext = a.find('a').getText()
+        mp = 0
+        while mp < len(datetext):
+            nos = 0
+            while nos < 10:
+                if datetext[mp] in othernumbers[nos]:
+                    datetext[mp] = str(nos)
+                    break
+                nos += 1
+            mp += 1
         ptr = 0
         for ts in dfp:
             if ts[0] == 'y':
