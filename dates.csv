@@ -1,22 +1,32 @@
 lang,format,1,2,3,4,5,6,7,8,9,10,11,12
 mul,"%t, %d %m %y",January,February,March,April,May,June,July,August,September,October,November,December
 af,"%t, %d %m %y",Januarie,Februarie,Maart,April,Mei,Junie,Julie,Augustus,September,Oktober,November,Desember
+ca,"%t, %d %m %y",gen,feb,març,abr,maig,juny,jul,ago,set,oct,nov,des
 de,"%t, %d. %m. %y",Jan,Feb,Mär,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez
+el,"%t, %d %m %y",Ιανουαρίου,Φεβρουαρίου,Μαρτίου,Απριλίου,Μαΐου,Ιουνίου,Ιουλίου,Αυγούστου,Σεπτεμβρίου,Οκτωβρίου,Νοεμβρίου,Δεκεμβρίου
 en,"%t, %d %m %y",January,February,March,April,May,June,July,August,September,October,November,December
 es,%t %d %m %y,ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic
+fi,%d. %m %y kello %t,tammikuuta,helmikuuta,maaliskuuta,huhtikuuta,toukokuuta,kesäkuuta,heinäkuuta,elokuuta,syyskuuta,lokakuuta,marraskuuta,joulukuuta
 fj,"%t, %d %m %y",Janueri,Veverueri,Maji,Epereli,May,June,Jiulai,Okosita,Seviteba,Okotova,Noveba,Tesiba
 fo,%d. %m %y kl. %t,jan,feb,mar,apr,mai,jun,jul,aug,sep,okt,nov,des
 fr,%d %m %y à %t,janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre
 haw,"%t, %d %m %y",Ianuali,Pepeluali,Malaki,ʻApelila,Mei,Iune,Iulai,ʻAukake,Kepakemapa,ʻOkakopa,Nowemapa,Kēkēmapa
+hu,"%y. %m %d., %t",január,február,március,április,május,június,július,augusztus,szeptember,október,november,december
 ia,"%t, %d %m %y",januario,februario,martio,april,maio,junio,julio,augusto,septembre,octobre,novembre,decembre
 ie,"%t, %d %m %y",januar,februar,marte,april,mai,junio,julí,august,septembre,octobre,novembre,decembre
 is,%d. %m %y kl. %t,janúar,febrúar,mars,apríl,maí,júní,júlí,ágúst,september,október,nóvember,desember
+it,"%t, %d %m %y",gen,feb,mar,apr,mag,giu,lug,ago,set,ott,nov,dic
+ku,"%t, %d %m %y",kanûna paşîn,sibat,adar,nîsan,gulan,hezîran,tîrmeh,tebax,îlon,çiriya pêşîn,çiriya paşîn,kanûna pêşîn
+lt,"%t, %d %m %y",sausio,vasario,kovo,balandžio,gegužės,birželio,liepos,rugpjūčio,rugsėjo,spalio,lapkričio,gruodžio
 mg,%d %m %y à %t,Janoary,Febroary,Martsa,Aprily,Mey,Jiona,Jolay,Aogositra,Septambra,Oktobra,Novambra,Desambra
 nl,%d %m %y %t,jan,feb,mrt,apr,mei,jun,jul,aug,sep,okt,nov,dec
+pl,"%t, %d %m %y",sty,lut,mar,kwi,maj,cze,lip,sie,wrz,paź,lis,gru
 ru,"%t, %d %m %y",января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря
 scn,"%t, %d %m %y",jin,friv,mar,Apr,maiu,giu,giugn,Au,sit,utt,nuv,Dic
 sh,"%t, %d %m %y",januar,februar,mart,april,maj,juni,juli,august,septembar,oktobar,novembar,decembar
 sv,%d %m %y kl. %t,januari,februari,mars,april,maj,juni,juli,augusti,september,oktober,november,december
 sw,"%t, %d %m %y",Januari,Februari,Machi,Aprili,Mei,Juni,Julai,Agosti,Septemba,Oktoba,Novemba,Desemba
+ta,"%t, %d %m %y",சனவரி,பெப்ரவரி,மார்ச்,ஏப்ரல்,மே,சூன்,சூலை,ஆகத்து,செப்டம்பர்,அக்டோபர்,நவம்பர்,திசம்பர்
+tr,"%t, %d %m %y",Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık
 wa,%d %m %y à %t,djanvî,fevrî,måss,avri,may,djun,djulete,awousse,setimbe,octôbe,nôvimbe,decimbe
 zh,%y年%m月%d日 (三) %t,1,2,3,4,5,6,7,8,9,10,11,12

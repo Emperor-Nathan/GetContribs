@@ -13,6 +13,8 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
+othernumbers = ['', '', '', '', '', '', '', '', '', '']
+
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
                'mediawiki':['www', 'mediawiki'],
