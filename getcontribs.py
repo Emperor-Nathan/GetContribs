@@ -13,6 +13,13 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
+othervalues = {'commons':['commons', 'wikimedia'],
+               'incubator':['incubator', 'wikimedia'],
+               'mediawiki':['www', 'mediawiki'],
+               'meta':['meta', 'wikimedia'],
+               'species':['species', 'wikimedia'],
+               'wikidata':['www', 'wikidata']}
+
 def readUser():
     file = open('userdata.txt', 'r')
     username = file.readline()
@@ -157,7 +164,9 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
                 continue
             fstr = ''
             for g in fstr1:
-                if g in '+-0123456789':
+                if g == '−':
+                    fstr += '-'
+                elif g in '+0123456789':
                     fstr += g
             final += int(fstr)
     if not surpassed:
@@ -178,7 +187,7 @@ for b in ud[3]:
             print('Error: missing date format for language ' + b + '.')
         try:
             f = getOneWiki(mode, b, a, '', sd, ed, dfb)
-            if f > 0:
+            if f != 0:
                 try:
                     totalcontribs[a][b] = f
                 except KeyError:
@@ -193,72 +202,63 @@ for b in ud[3]:
         except ValueError:
             print(b, a, 'ValueError')
 totalcontribs['other'] = {}
-try:
-    f = getOneWiki(mode, 'commons', 'wikimedia', '', sd, ed, dateformat['mul'])
-    if f > 0:
-        totalcontribs['other']['commons'] = f
-    final += f
-except requests.exceptions.ConnectionError:
-    print('Bad connection: commons')
-except AttributeError:
-    z = 0
-try:
-    f = getOneWiki(mode, 'incubator', 'wikimedia', '', sd, ed, dateformat['mul'])
-    if f > 0:
-        totalcontribs['other']['incubator'] = f
-    final += f
-except requests.exceptions.ConnectionError:
-    print('Bad connection: incubator')
-except AttributeError:
-    z = 0
-try:
-    f = getOneWiki(mode, 'www', 'mediawiki', '', sd, ed, dateformat['mul'])
-    if f > 0:
-        totalcontribs['other']['mediawiki'] = f
-    final += f
-except requests.exceptions.ConnectionError:
-    print('Bad connection: mediawiki')
-except AttributeError:
-    z = 0
-try:
-    f = getOneWiki(mode, 'meta', 'wikimedia', '', sd, ed, dateformat['mul'])
-    if f > 0:
-        totalcontribs['other']['meta'] = f
-    final += f
-except requests.exceptions.ConnectionError:
-    print('Bad connection: meta')
-except AttributeError:
-    z = 0
-try:
-    f = getOneWiki(mode, 'species', 'wikimedia', '', sd, ed, dateformat['mul'])
-    if f > 0:
-        totalcontribs['other']['species'] = f
-    final += f
-except requests.exceptions.ConnectionError:
-    print('Bad connection: species')
-except AttributeError:
-    z = 0
-try:
-    f = getOneWiki(mode, 'www', 'wikidata', '', sd, ed, dateformat['mul'])
-    if f > 0:
-        totalcontribs['other']['wikidata'] = f
-    final += f
-except requests.exceptions.ConnectionError:
-    print('Bad connection: wikidata')
-except AttributeError:
-    z = 0
-numdigits = len(str(final))
-for a in totalcontribs:
-    for b in totalcontribs[a]:
-        numstr = str(totalcontribs[a][b])
-        while len(numstr) < numdigits:
-            numstr = ' ' + numstr
-        if a == 'other':
-            if len(b) < 8:
-                print('', b + '\t', numstr, sep = '\t')
+for ow in ud[5]:
+    try:
+        f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], '', sd, ed, dateformat['mul'])
+        if f != 0:
+            totalcontribs['other'][ow] = f
+        final += f
+    except requests.exceptions.ConnectionError:
+        print('Bad connection: commons')
+    except AttributeError:
+        pass
+    numdigits = len(str(final))
+if mode == 'sbt':
+    maxabs = 0
+    for a in totalcontribs:
+        for b in totalcontribs[a]:
+            if abs(totalcontribs[a][b]) > maxabs:
+                maxabs = abs(totalcontribs[a][b])
+    if abs(final) > maxabs:
+        maxabs = abs(final)
+    for a in totalcontribs:
+        for b in totalcontribs[a]:
+            numstr = str(abs(totalcontribs[a][b]))
+            while len(numstr) < len(str(maxabs)):
+                numstr = ' ' + numstr
+            if totalcontribs[a][b] < 0:
+                numstr = '-' + numstr
+            elif totalcontribs[a][b] > 0:
+                numstr = '+' + numstr
+            if a == 'other':
+                if len(b) < 8:
+                    print('', b + '\t', numstr, sep = '\t')
+                else:
+                    print('', b, numstr, sep = '\t')
             else:
-                print('', b, numstr, sep = '\t')
-        else:
-            print(b, a, numstr, sep = '\t')
-print('\t', '', final, sep='\t')
+                print(b, a, numstr, sep = '\t')
+    finalstr = str(final)
+    while len(finalstr) < len(str(maxabs)):
+        finalstr = ' ' + finalstr
+    if final < 0:
+        finalstr = '-' + finalstr
+    elif final > 0:
+        finalstr = '+' + finalstr
+    else:
+        finalstr = ' ' + finalstr
+    print('\t', '', finalstr, sep='\t')
+else:
+    for a in totalcontribs:
+        for b in totalcontribs[a]:
+            numstr = str(totalcontribs[a][b])
+            while len(numstr) < numdigits:
+                numstr = ' ' + numstr
+            if a == 'other':
+                if len(b) < 8:
+                    print('', b + '\t', numstr, sep = '\t')
+                else:
+                    print('', b, numstr, sep = '\t')
+            else:
+                print(b, a, numstr, sep = '\t')
+    print('\t', '', final, sep='\t')
 print("--- %s s ---" % (round(time.time() - start_time, 3)))
