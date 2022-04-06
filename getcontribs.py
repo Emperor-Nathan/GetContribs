@@ -13,22 +13,6 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
-monthnames = {'an':['','','','','','','','','','','',''],
-              'bo':['','','','','','','','','','','',''],
-              'en':['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              'www':['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              'commons':['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              'incubator':['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              'meta':['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              'species':['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-              'ia':['januario','februario','martio','april','maio','junio','julio','augusto','septembre','octobre','novembre','decembre'],
-              'ie':['','februar','marte','april','','','','august','','','novembre',''],
-              'is':['janúar', 'febrúar', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'september', 'október', 'nóvember', 'desember'],
-              'fo':['jan','feb','mar','apr','mai','jun','jul','aug','sep','okt','nov','des'],
-              'haw':['Ianuali','Pepeluali','Malaki','ʻApelila','Mei','Iune','Iulai','ʻAukake','Kepakemapa','ʻOkakopa','Nowemapa','Kēkēmapa'],
-              'wa':['djanvî', 'fevrî', 'måss', 'avri', 'may', 'djun', 'djulete', 'awousse', 'setimbe', 'octôbe', 'nôvimbe', 'decimbe'],
-              'fj':['Janueri','Veverueri','Maji','Epereli','May','June','Jiulai','Okosita','Seviteba','Okotova','Noveba','Tesiba']}
-
 def readUser():
     file = open('userdata.txt', 'r')
     username = file.readline()

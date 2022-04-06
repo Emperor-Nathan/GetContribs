@@ -3,8 +3,8 @@ This is a tool for tracking your Wiki editing statistics. It allows you to view 
 
 To use this, you will need to modify the "userdata.txt" file as follows (see my personal example):
 - Line 1: your username
-- Line 2: start date/time in ISO 8601 datetime format
-- Line 3: end date/time in ISO 8601 datetime format
+- Line 2: start date/time (UTC) in ISO 8601 datetime format
+- Line 3: end date/time (UTC) in ISO 8601 datetime format
 - Line 4: list of language codes, separated by commas (spaces after commas required)
 - Line 5: list of language-specific wikis, separated by commas (spaces after commas required)
 - Line 6: list of non-language-specific wikis, separated by commas (spaces after commas required)
