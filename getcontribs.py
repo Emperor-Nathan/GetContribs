@@ -13,16 +13,16 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
-othernumbers = ['०০೦༠',
-                '१১೧༡',
-                '२২೨༢',
-                '३৩೩༣',
-                '४৪೪༤',
-                '५৫೫༥',
-                '६৬೬༦',
-                '७৭೭༧',
-                '८৮೮༨',
-                '९৯೯༩']
+othernumbers = ['०০੦૦೦༠',
+                '१১੧૧೧༡',
+                '२২੨૨೨༢',
+                '३৩੩૩೩༣',
+                '४৪੪૪೪༤',
+                '५৫੫૫೫༥',
+                '६৬੬૬೬༦',
+                '७৭੭૭೭༧',
+                '८৮੮૮೮༨',
+                '९৯੯૯೯༩']
 
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
@@ -66,7 +66,7 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, oldid):
     	return 0
     if oldid == '':
         try:
-            webpage_o = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + sd.strftime('%Y%m%d%H%M%S') + '&limit='+str(display)+'&target=' + ud[0]).content, 'html.parser')
+            webpage_o = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + sd.strftime('%Y%m%d%H%M%S') + '&limit=1&target=' + ud[0]).content, 'html.parser')
             oldid = webpage_o.find('ul', {'class':'mw-contributions-list'}).find('li')['data-mw-revid']
         except AttributeError:
             pass
