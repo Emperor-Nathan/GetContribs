@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from requests import get
 from datetime import datetime, timezone
-import requests, sys, time, csv
+import requests, sys, time
 
 totalcontribs = {}
 
@@ -23,8 +23,6 @@ othernumbers = ['०০೦༠',
                 '७৭೭༧',
                 '८৮೮༨',
                 '९৯೯༩']
-
-year_diff = {'th':543}
 
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
