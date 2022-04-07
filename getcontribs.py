@@ -13,7 +13,7 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
-othernumbers = ['༠', '༡', '༢', '༣', '༤', '༥', '༦', '༧', '༨', '༩']
+othernumbers = ['०༠', '१༡', '२༢', '३༣', '४༤', '५༥', '६༦', '७༧', '८༨', '९༩']
 
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
@@ -87,7 +87,10 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
             nos = 0
             while nos < 10:
                 if datetext[mp] in othernumbers[nos]:
-                    datetext[mp] = str(nos)
+                    try:
+                        datetext = datetext[:mp] + str(nos) + datetext[mp + 1:]
+                    except ValueError:
+                        datetext = datetext[:mp] + str(nos)
                     break
                 nos += 1
             mp += 1
@@ -155,6 +158,18 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
             if fstr1 == '0':
                 continue
             fstr1 = fstr1[1:]
+            mp = 0
+            while mp < len(fstr1):
+                nos = 0
+                while nos < 10:
+                    if fstr1[mp] in othernumbers[nos]:
+                        try:
+                            fstr1 = datetext[:mp] + str(nos) + fstr1[mp + 1:]
+                        except ValueError:
+                            fstr1 = datetext[:mp] + str(nos)
+                        break
+                    nos += 1
+                mp += 1
             fstr = ''
             for g in fstr1:
                 if g in '0123456789':
@@ -173,6 +188,18 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
             fstr1 = nb.getText()
             if fstr1 == '0':
                 continue
+            mp = 0
+            while mp < len(fstr1):
+                nos = 0
+                while nos < 10:
+                    if fstr1[mp] in othernumbers[nos]:
+                        try:
+                            fstr1 = datetext[:mp] + str(nos) + fstr1[mp + 1:]
+                        except ValueError:
+                            fstr1 = datetext[:mp] + str(nos)
+                        break
+                    nos += 1
+                mp += 1
             fstr = ''
             for g in fstr1:
                 if g == '−':
@@ -211,8 +238,8 @@ for b in ud[3]:
             continue
         except AttributeError:
             continue
-        except ValueError:
-            print(b, a, 'ValueError')
+        #except ValueError:
+            #print(b, a, 'ValueError')
 totalcontribs['other'] = {}
 for ow in ud[5]:
     try:
