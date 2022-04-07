@@ -13,16 +13,18 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
-othernumbers = ['०০༠',
-                '१১༡',
-                '२২༢',
-                '३৩༣',
-                '४৪༤',
-                '५৫༥',
-                '६৬༦',
-                '७৭༧',
-                '८৮༨',
-                '९৯༩']
+othernumbers = ['०০೦༠',
+                '१১೧༡',
+                '२২೨༢',
+                '३৩೩༣',
+                '४৪೪༤',
+                '५৫೫༥',
+                '६৬೬༦',
+                '७৭೭༧',
+                '८৮೮༨',
+                '९৯೯༩']
+
+year_diff = {'th':543}
 
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
@@ -108,6 +110,10 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
             if ts[0] == 'y':
                 datelist[0] = int(datetext[ptr:ptr + 4])
                 ptr += 3 + len(ts)
+                try:
+                    datelist[0] += year_diff[lang]
+                except KeyError:
+                    pass
             elif ts[0] == 't':
                 datelist[3] = int(datetext[ptr:ptr + 2])
                 datelist[4] = int(datetext[ptr + 3:ptr + 5])

@@ -3,6 +3,7 @@ mul,"%t, %d %m %y",January,February,March,April,May,June,July,August,September,O
 af,"%t, %d %m %y",Januarie,Februarie,Maart,April,Mei,Junie,Julie,Augustus,September,Oktober,November,Desember
 ar,%t، %d %m %y,يناير,فبراير,مارس,أبريل,مايو,يونيو,يوليو,أغسطس,سبتمبر,أكتوبر,نوفمبر,ديسمبر
 arz,%t، %d %m %y,يناير,فبراير,مارس,ابريل,مايو,يونيه,يوليه,اغسطس,سبتمبر,اكتوبر,نوفمبر,ديسمبر
+be,"%t, %d %m %y",студзеня,лютага,сакавіка,красавіка,мая,чэрвеня,ліпеня,жніўня,верасня,кастрычніка,лістапада,снежня
 ca,"%t, %d %m %y",gen,feb,març,abr,maig,juny,jul,ago,set,oct,nov,des
 ceb,"%t, %d %m %y",Enero,Pebrero,Marso,Abril,Mayo,Hunyo,Hulyo,Agosto,Septiyembre,Oktubre,Nobiyembre,Disyembre
 de,"%t, %d. %m %y",Jan.,Feb.,Mär.,Apr.,Mai,Jun.,Jul.,Aug.,Sep.,Okt.,Nov.,Dez.
@@ -16,11 +17,15 @@ fr,%d %m %y à %t,janvier,février,mars,avril,mai,juin,juillet,août,septembre,o
 haw,"%t, %d %m %y",Ianuali,Pepeluali,Malaki,ʻApelila,Mei,Iune,Iulai,ʻAukake,Kepakemapa,ʻOkakopa,Nowemapa,Kēkēmapa
 hi,"%t, %d %m %y",जनवरी,फ़रवरी,मार्च,अप्रैल,मई,जून,जुलाई,अगस्त,सितम्बर,अक्टूबर,नवम्बर,दिसम्बर
 hu,"%y. %m %d., %t",január,február,március,április,május,június,július,augusztus,szeptember,október,november,december
+hy,"%t, %d %m %y",հունվարի,փետրվարի,Մարտի,Ապրիլի,Մայիսի,Հունիսի,Հուլիսի,Օգոստոսի,սեպտեմբերի,Հոկտեմբերի,Նոյեմբերի,Դեկտեմբերի
 ia,"%t, %d %m %y",januario,februario,martio,april,maio,junio,julio,augusto,septembre,octobre,novembre,decembre
 ie,"%t, %d %m %y",januar,februar,marte,april,mai,junio,julí,august,septembre,octobre,novembre,decembre
+io,"%t, %d %m %y",jan.,feb.,mar.,apr.,di mayo.,jun.,jul.,ago.,sep.,okt.,nov.,dec.
 is,%d. %m %y kl. %t,janúar,febrúar,mars,apríl,maí,júní,júlí,ágúst,september,október,nóvember,desember
 it,"%t, %d %m %y",gen,feb,mar,apr,mag,giu,lug,ago,set,ott,nov,dic
 ja,%y年%m月%d日 (_) %t,1,2,3,4,5,6,7,8,9,10,11,12
+kn,"%t, %d %m %y",ಜನವರಿ,ಫೆಬ್ರವರಿ,ಮಾರ್ಚ್,ಏಪ್ರಿಲ್,ಮೇ,ಜೂನ್,ಜುಲೈ,ಆಗಸ್ಟ್,ಸೆಪ್ಟೆಂಬರ್,ಅಕ್ಟೋಬರ್,ನವೆಂಬರ್,ಡಿಸೆಂಬರ್
+ko,%y년 %m월 %d일 (_) %t,1,2,3,4,5,6,7,8,9,10,11,12
 ku,"%t, %d %m %y",kanûna paşîn,sibat,adar,nîsan,gulan,hezîran,tîrmeh,tebax,îlon,çiriya pêşîn,çiriya paşîn,kanûna pêşîn
 lt,"%t, %d %m %y",sausio,vasario,kovo,balandžio,gegužės,birželio,liepos,rugpjūčio,rugsėjo,spalio,lapkričio,gruodžio
 mg,%d %m %y à %t,Janoary,Febroary,Martsa,Aprily,Mey,Jiona,Jolay,Aogositra,Septambra,Oktobra,Novambra,Desambra
@@ -31,9 +36,11 @@ ru,"%t, %d %m %y",января,февраля,марта,апреля,мая,и�
 sa,"%t, %d %m %y",जनवरी,फेब्रवरी,मार्च्,एप्रिल्,मे,जून्,जुलै,आगस्ट्,सेप्टेम्बर्,अक्टोबर्,नवेम्बर्,डिसेम्बर्
 scn,"%t, %d %m %y",jin,friv,mar,Apr,maiu,giu,giugn,Au,sit,utt,nuv,Dic
 sh,"%t, %d %m %y",januar,februar,mart,april,maj,juni,juli,august,septembar,oktobar,novembar,decembar
+sr,"%t, %d. %m %y.",јануар,фебруар,март,април,мај,јун,јул,август,септембар,октобар,новембар,децембар
 sv,%d %m %y kl. %t,januari,februari,mars,april,maj,juni,juli,augusti,september,oktober,november,december
 sw,"%t, %d %m %y",Januari,Februari,Machi,Aprili,Mei,Juni,Julai,Agosti,Septemba,Oktoba,Novemba,Desemba
 ta,"%t, %d %m %y",சனவரி,பெப்ரவரி,மார்ச்,ஏப்ரல்,மே,சூன்,சூலை,ஆகத்து,செப்டம்பர்,அக்டோபர்,நவம்பர்,திசம்பர்
+th,"%t, %d %m %y",มกราคม,มีนาคม,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม,สิงหาคม,กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม
 tr,"%t, %d %m %y",Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık
 uk,"%t, %d %m %y",січня,лютого,березня,квітня,травня,червня,липня,серпня,вересня,жовтня,листопада,грудня
 vi,"%t, ngày %d tháng %m năm %y",1,2,3,4,5,6,7,8,9,10,11,12
