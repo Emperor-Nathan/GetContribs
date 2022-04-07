@@ -55,24 +55,8 @@ def readUser():
     file.close()
     return [username, sdate, edate, langlist, wikilist, wikilist2]
 
-def readDateFormat():
-    file = open('dates.csv')
-    lesari = csv.reader(file, delimiter = ',')
-    dic = {}
-    for row in lesari:
-        if row[0] == 'lang':
-            continue
-        lc = row[0]
-        del row[0]
-        dic[lc] = row
-    return dic
-
-def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
+def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, oldid):
     global ud
-    if lang == 'www' or wiki == 'wikimedia':
-        mul = True
-    else:
-        mul = False
     final = 0
     webpage = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + offset + '&limit='+str(display)+'&target=' + ud[0]).content, 'html.parser')
     try:
@@ -82,79 +66,19 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
     listof_meta = webpage.find_all('ul', {'class':'mw-contributions-list'})
     if len(listof_meta) == 0:
     	return 0
+    if oldid == '':
+        try:
+            webpage_o = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + sd.strftime('%Y%m%d%H%M%S') + '&limit='+str(display)+'&target=' + ud[0]).content, 'html.parser')
+            oldid = webpage_o.find('ul', {'class':'mw-contributions-list'}).find('li')['data-mw-revid']
+        except AttributeError:
+            pass
     listof = []
     for ul in listof_meta:
         for li in ul.find_all('li'):
             listof.append(li)
-    dfp = df[0].split('%')
-    if len(dfp[0]) == 0:
-        del dfp[0]
-    datelist = [0, 0, 0, 0, 0]
     surpassed = False
     for a in listof:
-        datetext = a.find('a').getText()
-        mp = 0
-        while mp < len(datetext):
-            nos = 0
-            while nos < 10:
-                if datetext[mp] in othernumbers[nos]:
-                    try:
-                        datetext = datetext[:mp] + str(nos) + datetext[mp + 1:]
-                    except ValueError:
-                        datetext = datetext[:mp] + str(nos)
-                    break
-                nos += 1
-            mp += 1
-        ptr = 0
-        for ts in dfp:
-            if ts[0] == 'y':
-                datelist[0] = int(datetext[ptr:ptr + 4])
-                ptr += 3 + len(ts)
-                try:
-                    datelist[0] += year_diff[lang]
-                except KeyError:
-                    pass
-            elif ts[0] == 't':
-                datelist[3] = int(datetext[ptr:ptr + 2])
-                datelist[4] = int(datetext[ptr + 3:ptr + 5])
-                ptr += 4 + len(ts)
-            elif ts[0] == 'd':
-                if datetext[ptr + 1] in '0123456789':
-                    datelist[2] = int(datetext[ptr:ptr + 2])
-                    ptr += len(ts) + 1
-                else:
-                    datelist[2] = int(datetext[ptr:ptr + 1])
-                    ptr += len(ts)
-            elif ts[0] == 'm':
-                nc = ptr
-                while datetext[nc] != ts[1]:
-                    nc += 1
-                mname = datetext[ptr:nc]
-                ptr = nc
-                ne = 1
-                while ne < 13:
-                    if df[ne] == mname:
-                        break
-                    ne += 1
-                datelist[1] = ne
-                ptr += len(ts) - 1
-        datestr = str(datelist[0]) + '-'
-        if datelist[1] < 10:
-            datestr += '0'
-        datestr += str(datelist[1]) + '-'
-        if datelist[2] < 10:
-            datestr += '0'
-        datestr += str(datelist[2]) + 'T'
-        if datelist[3] < 10:
-            datestr += '0'
-        datestr += str(datelist[3]) + ':'
-        if datelist[4] < 10:
-            datestr += '0'
-        datestr += str(datelist[4]) + ':00+00:00'
-        date = datetime.fromisoformat(datestr)
-        if date > maxdate:
-            continue
-        elif date < mindate:
+        if a['data-mw-revid'] == oldid:
             surpassed = True
             break
         if mode == 'num':
@@ -222,25 +146,20 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, df):
                 elif g in '+0123456789':
                     fstr += g
             final += int(fstr)
-    if not surpassed:
-        final += getOneWiki(mode, lang, wiki, npo, mindate, maxdate, df)
+    if npo != '' and not surpassed:
+        final += getOneWiki(mode, lang, wiki, npo, mindate, maxdate, oldid)
     return final
 
 start_time = time.time()
 mode = sys.argv[1]
 ud = readUser()
-dateformat = readDateFormat()
 sd = ud[1]
 ed = ud[2]
 mxdstr = ed.strftime('%Y%m%d%H%M%S')
 for b in ud[3]:
     for a in ud[4]:
         try:
-            dfb = dateformat[b]
-        except KeyError:
-            print('Error: missing date format for language ' + b + '.')
-        try:
-            f = getOneWiki(mode, b, a, mxdstr, sd, ed, dfb)
+            f = getOneWiki(mode, b, a, mxdstr, sd, ed, '')
             if f != 0:
                 try:
                     totalcontribs[a][b] = f
@@ -258,7 +177,7 @@ for b in ud[3]:
 totalcontribs['other'] = {}
 for ow in ud[5]:
     try:
-        f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], mxdstr, sd, ed, dateformat['mul'])
+        f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], mxdstr, sd, ed, '')
         if f != 0:
             totalcontribs['other'][ow] = f
         final += f

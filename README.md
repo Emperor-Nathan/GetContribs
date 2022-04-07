@@ -13,5 +13,3 @@ Then run it on the command line. There is one argument, which represents how to 
 - num: total number of edits
 - abt: absolute number of bytes
 - sbt: signed number of bytes
-
-Unfortunately, due to Wiki's CSS interface, the program has to scrape the date as a string, with differences in date formatting and the month names, for each language. All of the date formats and month names are contained in the "dates.csv" file. I will try to ensure that it is as complete as possible, but if there is a language that isn't in the file that you want to use, then you will have to add it yourself. If you know of a workaround for this, please tell me; I will greatly appreciate your help.
