@@ -13,7 +13,16 @@ totalcontribs = {}
 display = 100 # Change this
 final = 0
 
-othernumbers = ['०༠', '१༡', '२༢', '३༣', '४༤', '५༥', '६༦', '७༧', '८༨', '९༩']
+othernumbers = ['०০༠',
+                '१১༡',
+                '२২༢',
+                '३৩༣',
+                '४৪༤',
+                '५৫༥',
+                '६৬༦',
+                '७৭༧',
+                '८৮༨',
+                '९৯༩']
 
 othervalues = {'commons':['commons', 'wikimedia'],
                'incubator':['incubator', 'wikimedia'],
@@ -238,8 +247,8 @@ for b in ud[3]:
             continue
         except AttributeError:
             continue
-        #except ValueError:
-            #print(b, a, 'ValueError')
+        except ValueError:
+            print(b, a, 'ValueError')
 totalcontribs['other'] = {}
 for ow in ud[5]:
     try:
