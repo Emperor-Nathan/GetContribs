@@ -180,7 +180,7 @@ for ow in ud[5]:
             totalcontribs['other'][ow] = f
         final += f
     except requests.exceptions.ConnectionError:
-        print('Bad connection: commons')
+        print('Bad connection:', ow)
     except AttributeError:
         pass
     numdigits = len(str(final))
