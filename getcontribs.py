@@ -10,7 +10,7 @@ totalcontribs = {}
 # abt: number of bytes (absolute value)
 # sbt: number of bytes (signed value)
 
-display = 100 # Change this
+display = 50
 final = 0
 
 othernumbers = ['०০੦૦೦༠',
@@ -55,10 +55,15 @@ def readUser():
 
 def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, oldid):
     global ud
+    global display
     final = 0
     webpage = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + offset + '&limit='+str(display)+'&target=' + ud[0]).content, 'html.parser')
     try:
-        npo = webpage.find('a', {'class':'mw-nextlink'})['href'][len(ud[0])+49:len(ud[0])+63]
+        nli = webpage.find('a', {'class':'mw-nextlink'})['href']
+        pos = 19
+        while nli[pos:pos + len(ud[0]) + 1] != '/' + ud[0]:
+            pos += 1
+        npo = nli[len(ud[0])+pos+9:len(ud[0])+pos+23]
     except TypeError:
         npo = ''
     listof_meta = webpage.find_all('ul', {'class':'mw-contributions-list'})
@@ -144,6 +149,16 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, oldid):
                 elif g in '+0123456789':
                     fstr += g
             final += int(fstr)
+    if offset == ud[2].strftime('%Y%m%d%H%M%S') and npo != '':
+        listdate = datetime.strptime(npo + '+0000', '%Y%m%d%H%M%S%z')
+        firstpage = ud[2] - listdate
+        tlen = ud[2] - ud[1]
+        if firstpage * 10 < tlen:
+            display = 500
+        elif firstpage * 4 < tlen:
+            display = 200
+        elif firstpage * 2 < tlen:
+            display = 100
     if npo != '' and not surpassed:
         final += getOneWiki(mode, lang, wiki, npo, mindate, maxdate, oldid)
     return final
@@ -156,6 +171,7 @@ ed = ud[2]
 mxdstr = ed.strftime('%Y%m%d%H%M%S')
 for b in ud[3]:
     for a in ud[4]:
+        display = 50
         try:
             f = getOneWiki(mode, b, a, mxdstr, sd, ed, '')
             if f != 0:
@@ -174,6 +190,7 @@ for b in ud[3]:
             print(b, a, 'ValueError')
 totalcontribs['other'] = {}
 for ow in ud[5]:
+    display = 50
     try:
         f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], mxdstr, sd, ed, '')
         if f != 0:
