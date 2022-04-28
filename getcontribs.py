@@ -68,7 +68,7 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, oldid):
         npo = ''
     listof_meta = webpage.find_all('ul', {'class':'mw-contributions-list'})
     if len(listof_meta) == 0:
-    	return 0
+        return 0
     if oldid == '':
         try:
             webpage_o = BeautifulSoup(get('https://'+lang+'.'+wiki+'.org/w/index.php?title=Special:Contributions/' + ud[0] + '&offset=' + sd.strftime('%Y%m%d%H%M%S') + '&limit=1&target=' + ud[0]).content, 'html.parser')
@@ -196,7 +196,11 @@ for ow in ud[5]:
         try:
             f = getOneWiki(mode, dotow[0], dotow[1], mxdstr, sd, ed, '')
             if f != 0:
-                totalcontribs[dotow[1]][dotow[0]] = f
+                try:
+                    totalcontribs[dotow[1]][dotow[0]] = f
+                except KeyError:
+                    totalcontribs[dotow[1]] = {}
+                    totalcontribs[dotow[1]][dotow[0]] = f
             final += f
         except requests.exceptions.ConnectionError:
             print('Bad connection:', dotow[1], dotow[0])
