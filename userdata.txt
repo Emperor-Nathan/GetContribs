@@ -1,6 +1,6 @@
 Numberguy6
-2022-04-11T07:00:00
-2022-04-18T07:00:00
+2022-04-25T07:00:00
+2022-05-02T07:00:00
 en, fj, fo, haw, ia, ie, is, scn, wa
-wikipedia, wikibooks, wikinews, wikiquote, wikisource, wikivoyage, wiktionary
-commons, incubator, mediawiki, meta, species, wikidata
+wikipedia, wiktionary, wikibooks, wikisource
+en.wikiquote, en.wikivoyage, en.wikinews, commons, incubator, mediawiki, meta, species, wikidata

@@ -191,15 +191,27 @@ for b in ud[3]:
 totalcontribs['other'] = {}
 for ow in ud[5]:
     display = 50
-    try:
-        f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], mxdstr, sd, ed, '')
-        if f != 0:
-            totalcontribs['other'][ow] = f
-        final += f
-    except requests.exceptions.ConnectionError:
-        print('Bad connection:', ow)
-    except AttributeError:
-        pass
+    if '.' in ow:
+        dotow = ow.split('.')
+        try:
+            f = getOneWiki(mode, dotow[0], dotow[1], mxdstr, sd, ed, '')
+            if f != 0:
+                totalcontribs[dotow[1]][dotow[0]] = f
+            final += f
+        except requests.exceptions.ConnectionError:
+            print('Bad connection:', dotow[1], dotow[0])
+        except AttributeError:
+            pass
+    else:
+        try:
+            f = getOneWiki(mode, othervalues[ow][0], othervalues[ow][1], mxdstr, sd, ed, '')
+            if f != 0:
+                totalcontribs['other'][ow] = f
+            final += f
+        except requests.exceptions.ConnectionError:
+            print('Bad connection:', ow)
+        except AttributeError:
+            pass
     numdigits = len(str(final))
 if mode == 'sbt':
     maxabs = 0
