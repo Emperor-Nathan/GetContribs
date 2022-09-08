@@ -63,7 +63,7 @@ def getOneWiki(mode, lang, wiki, offset, mindate, maxdate, oldid):
         pos = 19
         while nli[pos:pos + len(ud[0]) + 1] != '/' + ud[0]:
             pos += 1
-        npo = nli[len(ud[0])+pos+9:len(ud[0])+pos+23]
+        npo = nli[len(ud[0])*2+pos+17:len(ud[0])*2+pos+31]
     except TypeError:
         npo = ''
     listof_meta = webpage.find_all('ul', {'class':'mw-contributions-list'})
